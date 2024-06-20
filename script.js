@@ -20,8 +20,7 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
-    const humanChoice = getHumanChoice();
-    const computerChoice = getComputerChoice();
+    
 
     function playRound(humanChoice, computerChoice) {
         const loseMessage = `You lose! ${computerChoice} beats ${humanChoice}`;
@@ -34,39 +33,48 @@ function playGame() {
 
         if (humanChoice === 'rock') {
             if (computerChoice === 'paper') {
-                console.log(loseMessage);
-                computerScore++
+                computerScore++;
+                console.log(loseMessage, `Scores: You: ${humanScore}, Computer: ${computerScore}`);
          }
             if (computerChoice === 'scissors') {
-                console.log(winMessage);
                 humanScore++;
+                console.log(winMessage, `Scores: You: ${humanScore}, Computer: ${computerScore}`);
             }
         }
         if (humanChoice === 'paper') {
             if (computerChoice === 'scissors') {
-                console.log(loseMessage);
-                computerScore++
+                computerScore++;
+                console.log(loseMessage, `Scores: You: ${humanScore}, Computer: ${computerScore}`);
             }
             if (computerChoice === 'rock') {
-                console.log(winMessage);
                 humanScore++;
+                console.log(winMessage, `Scores: You: ${humanScore}, Computer: ${computerScore}`);
             }
         }
         if (humanChoice === 'scissors') {
             if (computerChoice === 'rock') {
-                console.log(loseMessage);
-                computerScore++
+                computerScore++;
+                console.log(loseMessage, `Scores: You: ${humanScore}, Computer: ${computerScore}`);
             }
             if (computerChoice === 'paper') {
-                console.log(winMessage);
                 humanScore++;
+                console.log(winMessage, `Scores: You: ${humanScore}, Computer: ${computerScore}`);
             }
         }
     }
+
     playRound(getHumanChoice(), getComputerChoice());
     playRound(getHumanChoice(), getComputerChoice());
     playRound(getHumanChoice(), getComputerChoice());
     playRound(getHumanChoice(), getComputerChoice());
     playRound(getHumanChoice(), getComputerChoice());
+
+    if (humanScore > computerScore) {
+        console.log('The winner is the human!');
+    } else if (computerScore > humanScore) {
+        console.log('The winner is the computer!');
+    } else if (humanScore === computerScore) {
+        console.log('The winner is no one!')
+    }
 }
 playGame();
