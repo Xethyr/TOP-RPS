@@ -1,3 +1,7 @@
+const rockBtn = document.getElementById('rock-btn');
+const paperBtn = document.getElementById('paper-btn');
+const scissorsBtn = document.getElementById('scissors-btn');
+
 function getComputerChoice() {
     let number = Math.floor(Math.random() * 3)
     if (number === 0) {
@@ -19,8 +23,6 @@ function getHumanChoice() {
 function playGame() {
     let humanScore = 0;
     let computerScore = 0;
-
-    
 
     function playRound(humanChoice, computerChoice) {
         const loseMessage = `You lose! ${computerChoice} beats ${humanChoice}`;
@@ -62,19 +64,18 @@ function playGame() {
             }
         }
     }
+    rockBtn.addEventListener('click', () => {
+        playRound('rock', getComputerChoice());
+    })
+    paperBtn.addEventListener('click', () => {
+        playRound('paper', getComputerChoice());
+    })
+    scissorsBtn.addEventListener('click', () => {
+        playRound('scissors', getComputerChoice());
+    })
 
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-
-    if (humanScore > computerScore) {
-        console.log('The winner is the human!');
-    } else if (computerScore > humanScore) {
-        console.log('The winner is the computer!');
-    } else if (humanScore === computerScore) {
-        console.log('The winner is no one!')
-    }
 }
 playGame();
+
+
+
